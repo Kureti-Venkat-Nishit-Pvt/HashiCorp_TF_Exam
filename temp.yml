@@ -1,0 +1,21 @@
+trigger: 
+ branches: 
+   include: 
+   - main 
+stages: 
+- stage: __default 
+ jobs: 
+ - job: Job 
+   pool: 
+     vmImage: ubuntu-latest 
+   steps: 
+   - task: UsePythonVersion@0 
+     inputs: 
+       versionSpec: '3.x' 
+   - task: CmdLine@2 
+     displayName: 'Run Hello_Hexaware Sample Application in GitHub using Azure DevOps' 
+     inputs: 
+       script: | 
+         python -m pip install --upgrade pip 
+         python Hello_Hexaware.py 
+ 
